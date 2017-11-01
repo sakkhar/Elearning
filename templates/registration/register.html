@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <h1>Registraion Now</h1>
+    <div class="module">
+        {% if form.errors %}
+        {% else %}
+            <p>Please, use the following form to Register Now:</p>
+        {% endif %}
+        <div class="login-form">
+            <form action="{% url 'register' %}" method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}" />
+                <p><input type="submit" value="Log-in"></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}
